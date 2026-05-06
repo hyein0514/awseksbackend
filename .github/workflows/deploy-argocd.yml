@@ -53,7 +53,7 @@ jobs:
       - name: Checkout Infra Repository
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/hyein0514/awseksinfra.git
+          repository: hyein0514/awseksinfra
           token: ${{ secrets.ARGOCD_GIT_TOKEN }}
           path: infra-repo
 
@@ -70,7 +70,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
 
-          git add manifests/backend/deployment
+          git add manifests/backend/deployment.yaml
 
           if ! git diff-index --quiet HEAD; then
             git commit -m "chore: update backend image to ${{ github.sha }} [skip ci]"
